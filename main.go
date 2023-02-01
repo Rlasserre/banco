@@ -19,6 +19,9 @@ func main() {
 
 	maraisaAccount := currentAccounts{"Maraisa", 756, 369852, 287.32}
 
-	fmt.Println(rafaelAccount, maraisaAccount)
+	var chrisAccount *currentAccounts
+	chrisAccount = new(currentAccounts)
+	chrisAccount.accountOwner = "Chris"
 
+	fmt.Println(rafaelAccount, maraisaAccount, chrisAccount)
 }
