@@ -1,13 +1,13 @@
 package accounts
 
-type checkingAccounts struct {
+type CheckingAccounts struct {
 	AccountOwner   string
 	BankBranch     int
 	AccountNumber  int
 	AccountBalance float64
 }
 
-func (c *checkingAccounts) Withdrawn(withdrawnAmount float64) string {
+func (c *CheckingAccounts) Withdrawn(withdrawnAmount float64) string {
 
 	authorized := withdrawnAmount > 0 && withdrawnAmount <= c.AccountBalance
 
@@ -19,7 +19,7 @@ func (c *checkingAccounts) Withdrawn(withdrawnAmount float64) string {
 	}
 }
 
-func (c *checkingAccounts) Deposit(depositAmount float64) (string, float64) {
+func (c *CheckingAccounts) Deposit(depositAmount float64) (string, float64) {
 
 	if depositAmount >= 0 {
 		c.AccountBalance += depositAmount
@@ -29,8 +29,8 @@ func (c *checkingAccounts) Deposit(depositAmount float64) (string, float64) {
 	}
 }
 
-func (c *checkingAccounts) Transfer(transferAmount float64,
-	targetAccount *checkingAccounts) bool {
+func (c *CheckingAccounts) Transfer(transferAmount float64,
+	targetAccount *CheckingAccounts) bool {
 
 	if transferAmount < c.AccountBalance {
 		c.AccountBalance -= transferAmount
