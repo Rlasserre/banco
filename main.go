@@ -17,11 +17,18 @@ func main() {
 		accountNumber:  123456,
 		accountBalance: 125.58}
 
-	maraisaAccount := currentAccounts{"Maraisa", 756, 369852, 287.32}
+	rafaelAccount2 := currentAccounts{
+		accountOwner:   "Rafael",
+		bankBranch:     589,
+		accountNumber:  123456,
+		accountBalance: 125.58}
 
-	var chrisAccount *currentAccounts
-	chrisAccount = new(currentAccounts)
-	chrisAccount.accountOwner = "Chris"
+	fmt.Println(rafaelAccount == rafaelAccount2)
+	// maraisaAccount := currentAccounts{"Maraisa", 756, 369852, 287.32}
 
-	fmt.Println(rafaelAccount, maraisaAccount, chrisAccount)
+	// var chrisAccount *currentAccounts
+	// chrisAccount = new(currentAccounts)
+	// chrisAccount.accountOwner = "Chris"
+
+	// fmt.Println(rafaelAccount, maraisaAccount, chrisAccount)
 }
