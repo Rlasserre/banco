@@ -1,7 +1,9 @@
 package accounts
 
+import bankclients "bank/bankClients"
+
 type CheckingAccounts struct {
-	AccountOwner   string
+	AccountOwner   bankclients.AccountOwner
 	BankBranch     int
 	AccountNumber  int
 	AccountBalance float64
