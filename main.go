@@ -6,8 +6,8 @@ import (
 
 func main() {
 
-	silviaAccounts := checkingAccounts{accountOwner: "Silvia", accountBalance: 500}
-	ricardoAccounts := checkingAccounts{accountOwner: "Ricardo", accountBalance: 1000}
+	silviaAccounts := accounts.checkingAccounts{AccountOwner: "Silvia", AccountBalance: 500}
+	ricardoAccounts := accounts.checkingAccounts{AccountOwner: "Ricardo", AccountBalance: 1000}
 
 	status := silviaAccounts.Transfer(200, &ricardoAccounts)
 
