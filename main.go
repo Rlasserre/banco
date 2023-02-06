@@ -31,15 +31,25 @@ func (c *checkingAccounts) Deposit(depositAmount float64) (string, float64) {
 	}
 }
 
+func (c *checkingAccounts) Transfer(transferAmount float64, targetAccount *checkingAccounts) bool {
+
+	if transferAmount < c.accountBalance {
+		c.accountBalance -= transferAmount
+		targetAccount.Deposit(transferAmount)
+		return true
+	} else {
+		return false
+	}
+}
+
 func main() {
 
-	silviaAccounts := checkingAccounts{}
-	silviaAccounts.accountOwner = "Silvia"
-	silviaAccounts.accountBalance = 500
+	silviaAccounts := checkingAccounts{accountOwner: "Silvia", accountBalance: 500}
+	ricardoAccounts := checkingAccounts{accountOwner: "Ricardo", accountBalance: 1000}
 
-	fmt.Println(silviaAccounts.accountBalance)
-	status, valor := silviaAccounts.Deposit(300)
-	fmt.Println(status, valor)
+	status := silviaAccounts.Transfer(200, &ricardoAccounts)
 
-	//fmt.Println(silviaAccounts.accountBalance)
+	fmt.Println(status)
+	fmt.Println(silviaAccounts)
+	fmt.Println(ricardoAccounts)
 }
