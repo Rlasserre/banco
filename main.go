@@ -14,7 +14,7 @@ func main() {
 	clientRicardo := bankclients.AccountOwner{Name: "Ricardo", Cpf: "321.654.987.23", Ocupation: "Motorista"}
 	ricardoAccounts := accounts.CheckingAccounts{AccountOwner: clientRicardo, BankBranch: 456, AccountNumber: 789561}
 
-	denisAccount := bankclients.SavingsAccounts{}
+	denisAccount := accounts.SavingsAccounts{}
 
 	silviaAccounts.Deposit(700)
 	ricardoAccounts.Deposit(1500)
