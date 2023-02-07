@@ -6,15 +6,15 @@ type CheckingAccounts struct {
 	AccountOwner   bankclients.AccountOwner
 	BankBranch     int
 	AccountNumber  int
-	AccountBalance float64
+	accountBalance float64
 }
 
 func (c *CheckingAccounts) Withdrawn(withdrawnAmount float64) string {
 
-	authorized := withdrawnAmount > 0 && withdrawnAmount <= c.AccountBalance
+	authorized := withdrawnAmount > 0 && withdrawnAmount <= c.accountBalance
 
 	if authorized {
-		c.AccountBalance -= withdrawnAmount
+		c.accountBalance -= withdrawnAmount
 		return "Saque realizado com sucesso"
 	} else {
 		return "Saldo insuficiente"
@@ -24,21 +24,25 @@ func (c *CheckingAccounts) Withdrawn(withdrawnAmount float64) string {
 func (c *CheckingAccounts) Deposit(depositAmount float64) (string, float64) {
 
 	if depositAmount >= 0 {
-		c.AccountBalance += depositAmount
-		return "Deposito realizado com sucesso", c.AccountBalance
+		c.accountBalance += depositAmount
+		return "Deposito realizado com sucesso", c.accountBalance
 	} else {
-		return "O valor do deposito invalido.", c.AccountBalance
+		return "O valor do deposito invalido.", c.accountBalance
 	}
 }
 
 func (c *CheckingAccounts) Transfer(transferAmount float64,
 	targetAccount *CheckingAccounts) bool {
 
-	if transferAmount < c.AccountBalance {
-		c.AccountBalance -= transferAmount
+	if transferAmount < c.accountBalance {
+		c.accountBalance -= transferAmount
 		targetAccount.Deposit(transferAmount)
 		return true
 	} else {
 		return false
 	}
+}
+
+func (c *CheckingAccounts) ShowAccountBalance() float64 {
+	return c.accountBalance
 }
