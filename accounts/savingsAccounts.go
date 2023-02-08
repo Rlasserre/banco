@@ -29,3 +29,7 @@ func (c *SavingsAccounts) Deposit(depositAmount float64) (string, float64) {
 		return "O valor do deposito invalido.", c.accountBalance
 	}
 }
+
+func (c *SavingsAccounts) ShowAccountBalance() float64 {
+	return c.accountBalance
+}
