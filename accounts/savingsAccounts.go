@@ -8,15 +8,15 @@ type SavingsAccounts struct {
 	accountBalance                       float64
 }
 
-func (c *SavingsAccounts) Withdrawn(withdrawnAmount float64) (string, float64) {
+func (c *SavingsAccounts) Withdrawn(withdrawnAmount float64) string {
 
 	authorized := withdrawnAmount > 0 && withdrawnAmount <= c.accountBalance
 
 	if authorized {
 		c.accountBalance -= withdrawnAmount
-		return "Saque realizado com sucesso", c.accountBalance
+		return "Saque realizado com sucesso"
 	} else {
-		return "Saldo insuficiente", c.accountBalance
+		return "Saldo insuficiente"
 	}
 }
 
